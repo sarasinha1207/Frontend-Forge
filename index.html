@@ -3,31 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otach Watch</title>
+    <title>Imperion Watches</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        :root {
+            --royal-blue: #091235;
+            --navy-blue: #14202E;
+            --midnight-blue: #2B4257;
+            --blue-gray: #88A9C3;
+            --white: #FFFFFF;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8;
-            color: #1a202c;
+            background-color: var(--white);
+            color: var(--navy-blue);
             overflow-x: hidden;
         }
         .container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        .text-dark-green {
-            color: #1d404d;
+        .text-royal-blue {
+            color: var(--royal-blue);
         }
-        .bg-light-green {
-            background-color: #e6f0f5;
+        .bg-royal-blue {
+            background-color: var(--royal-blue);
         }
-        .bg-dark-green {
-            background-color: #1d404d;
+        .bg-navy-blue {
+            background-color: var(--navy-blue);
         }
-        .border-green {
-            border-color: #1d404d;
+        .bg-blue-gray {
+            background-color: var(--blue-gray);
+        }
+        .border-royal-blue {
+            border-color: var(--royal-blue);
         }
         .rounded-3xl {
             border-radius: 1.5rem;
@@ -42,7 +53,73 @@
             transform: rotate(-10deg);
         }
         .bg-gradient-custom {
-            background-image: linear-gradient(135deg, #1d404d 0%, #3e6d87 100%);
+            background-image: linear-gradient(135deg, var(--royal-blue) 0%, var(--midnight-blue) 100%);
+        }
+        .card-image {
+            position: relative;
+        }
+        .card-image .sale-badge, .card-image .new-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--royal-blue);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .card-image .heart-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: white;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .card-image .heart-icon svg {
+            transition: fill 0.2s ease;
+        }
+        .page-transition {
+            transition: opacity 0.5s ease-in-out;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        .btn-hover-scale:hover {
+            transform: scale(1.05);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1rem;
+        }
+        .accordion-content.is-open {
+            max-height: 200px; /* Adjust as needed */
+            padding: 1rem;
+        }
+        .accordion-item .plus-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.is-open .plus-icon {
+            transform: rotate(45deg);
         }
     </style>
 </head>
@@ -52,29 +129,26 @@
 <header class="bg-white py-4 shadow-sm">
     <div class="container flex justify-between items-center px-6">
         <a href="#" class="flex items-center space-x-2" onclick="showPage('home-section')">
-            <svg class="w-8 h-8 text-dark-green" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM13 7h-2v5l4 2-1 2-3-1.5V7z"/>
-            </svg>
-            <span class="text-3xl font-bold text-dark-green">Otach</span>
-        </a>
+    <img src="Image resource/logo-2.png" alt="Otach Logo" class="h-10 w-auto">
+    <span class="text-3xl font-bold text-royal-blue">Imperion Watches</span>
+</a>
         <nav class="hidden lg:flex space-x-6 text-gray-600 font-medium">
-            <a href="#" onclick="showPage('shop-section')" class="hover:text-dark-green">Shop</a>
-            <a href="#" onclick="showPage('brands-section')" class="hover:text-dark-green">Brands</a>
-            <a href="#" onclick="showPage('editorial-section')" class="hover:text-dark-green">Editorial</a>
-            <a href="#" onclick="showPage('press-section')" class="hover:text-dark-green">Press</a>
-            <a href="#" onclick="showPage('contact-section')" class="hover:text-dark-green">Contact</a>
+            <a href="#" onclick="showPage('home-section')" class="hover:text-royal-blue">Home</a>
+            <a href="#" onclick="showPage('shop-section')" class="hover:text-royal-blue">Shop</a>
+            <a href="#" onclick="showPage('about-section')" class="hover:text-royal-blue">About Us</a>
+            <a href="#" onclick="showPage('press-section')" class="hover:text-royal-blue">Press</a>
+            <a href="#" onclick="showPage('contact-section')" class="hover:text-royal-blue">Contact Us</a>
         </nav>
         <div class="flex items-center space-x-4">
-            <a href="#" onclick="showPage('account-section')" class="hidden lg:block text-gray-600 hover:text-dark-green font-medium">Account</a>
-            <a href="#" onclick="showPage('pricelist-section')" class="hidden lg:block text-gray-600 hover:text-dark-green font-medium">Pricelist</a>
-            <a href="#" class="flex items-center space-x-1 text-dark-green font-medium bg-light-green px-4 py-2 rounded-full hover:bg-opacity-80 transition-colors">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <a href="#" onclick="showPage('account-section')" class="hidden lg:block text-gray-600 hover:text-royal-blue font-medium">Account</a>
+            <a href="#" onclick="showPage('favorites-section')" class="p-2 hidden lg:block rounded-full hover:bg-gray-200 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600 hover:text-royal-blue transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M4 11h16a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1v-8a1 1 0 011-1z" />
                 </svg>
-                <span class="text-sm">4.9/5</span>
             </a>
+            
             <button class="lg:hidden p-2 rounded-md hover:bg-gray-200" onclick="toggleMobileMenu()">
-                <svg class="w-6 h-6 text-dark-green" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
@@ -85,34 +159,33 @@
 <!-- Mobile Menu (initially hidden) -->
 <nav id="mobile-menu" class="lg:hidden bg-white shadow-md py-4 transition-all duration-300 transform -translate-y-full absolute w-full z-10">
     <div class="flex flex-col items-center space-y-4 text-gray-600 font-medium">
-        <a href="#" onclick="showPage('shop-section'); toggleMobileMenu();" class="hover:text-dark-green">Shop</a>
-        <a href="#" onclick="showPage('brands-section'); toggleMobileMenu();" class="hover:text-dark-green">Brands</a>
-        <a href="#" onclick="showPage('editorial-section'); toggleMobileMenu();" class="hover:text-dark-green">Editorial</a>
-        <a href="#" onclick="showPage('press-section'); toggleMobileMenu();" class="hover:text-dark-green">Press</a>
-        <a href="#" onclick="showPage('contact-section'); toggleMobileMenu();" class="hover:text-dark-green">Contact</a>
-        <a href="#" onclick="showPage('account-section'); toggleMobileMenu();" class="hover:text-dark-green">Account</a>
-        <a href="#" onclick="showPage('pricelist-section'); toggleMobileMenu();" class="hover:text-dark-green">Pricelist</a>
+        <a href="#" onclick="showPage('home-section'); toggleMobileMenu();" class="hover:text-royal-blue">Home</a>
+        <a href="#" onclick="showPage('shop-section'); toggleMobileMenu();" class="hover:text-royal-blue">Shop</a>
+        <a href="#" onclick="showPage('about-section'); toggleMobileMenu();" class="hover:text-royal-blue">About Us</a>
+        <a href="#" onclick="showPage('press-section'); toggleMobileMenu();" class="hover:text-royal-blue">Press</a>
+        <a href="#" onclick="showPage('contact-section'); toggleMobileMenu();" class="hover:text-royal-blue">Contact</a>
+        <a href="#" onclick="showPage('account-section'); toggleMobileMenu();" class="hover:text-royal-blue">Account</a>
     </div>
 </nav>
 
 <main id="main-content">
     <!-- Home Section -->
-    <section id="home-section" class="py-16 lg:py-24">
+    <section id="home-section" class="page-transition">
         <!-- Hero Section -->
-        <section class="bg-gray-200 py-16 lg:py-24">
+        <section class="bg-blue-gray py-16 lg:py-24">
             <div class="container flex flex-col lg:flex-row items-center justify-between px-6">
-                <div class="lg:w-1/2 mb-10 lg:mb-0">
-                    <h1 class="text-4xl lg:text-7xl font-bold text-dark-green leading-tight mb-4">Crafted for Every Second</h1>
-                    <p class="text-lg text-gray-600 mb-6 max-w-lg">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 fade-in">
+                    <h1 class="text-4xl lg:text-7xl font-bold text-royal-blue leading-tight mb-4">Crafted for Every Second</h1>
+                    <p class="text-lg text-white mb-6 max-w-lg">
                         Discover a timeless blend of craftsmanship and cutting-edge technology.
                     </p>
                     <div class="flex items-center space-x-4">
-                        <button class="bg-dark-green text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Trending Products</button>
-                        <a href="#" onclick="showPage('shop-section')" class="text-dark-green font-semibold underline">Explore Shop</a>
+                        <button class="bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Trending Products</button>
+                        <a href="#" onclick="showPage('shop-section')" class="text-royal-blue font-semibold underline">Explore Shop</a>
                     </div>
                 </div>
-                <div class="lg:w-1/2 flex justify-center lg:justify-end relative">
-                    <img src="https://placehold.co/600x600/bde9d8/1d404d?text=Watch+Image" alt="Green Otach Watch" class="w-full max-w-xl watch-rotate rounded-3xl shadow-lg-custom">
+                <div class="lg:w-1/2 flex justify-center lg:justify-end relative fade-in">
+                    <img src="Image resource/smart-watch.png" alt="Green Otach Watch" class="w-full max-w-xl watch-rotate rounded-3xl shadow-lg-custom hover-effect">
                     <div class="absolute bottom-4 left-4 lg:bottom-10 lg:left-10 bg-white p-4 rounded-3xl shadow-lg-custom">
                         <p class="text-sm font-semibold">4.8V (20%)</p>
                         <p class="text-xs text-gray-500">Charging Rate</p>
@@ -124,107 +197,112 @@
         <!-- Features Section -->
         <section class="bg-white py-16 lg:py-24">
             <div class="container flex flex-col lg:flex-row items-center justify-between px-6">
-                <div class="lg:w-1/2 mb-10 lg:mb-0 pr-0 lg:pr-10">
-                    <div class="bg-gray-200 p-8 rounded-3xl shadow-lg-custom">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 pr-0 lg:pr-10 fade-in">
+                    <div class="bg-blue-gray p-8 rounded-3xl shadow-lg-custom hover-effect">
                         <div class="flex items-center space-x-2 mb-4">
-                            <svg class="w-6 h-6 text-dark-green" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-6 h-6 text-royal-blue" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M13 13h-2V7h2v6zm0-8h-2V3h2v2z"/>
                             </svg>
-                            <span class="text-sm font-medium text-dark-green">Battery life</span>
+                            <span class="text-sm font-medium text-royal-blue">Battery life</span>
                         </div>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <p class="text-white text-sm mb-4">
                             We've packed an insane 3650 days long battery life with advanced optimization to give you all-day, every-day power.
                         </p>
-                        <div class="flex items-center space-x-4 text-dark-green font-semibold text-lg">
+                        <div class="flex items-center space-x-4 text-royal-blue font-semibold text-lg">
                             <span>Day</span>
-                            <div class="w-2 h-2 bg-dark-green rounded-full"></div>
+                            <div class="w-2 h-2 bg-royal-blue rounded-full"></div>
+                            <span>3650</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-royal-blue font-semibold text-lg">
+                            <span>Day</span>
+                            <div class="w-2 h-2 bg-royal-blue rounded-full"></div>
                             <span>3650</span>
                         </div>
                     </div>
                 </div>
-                <div class="lg:w-1/2 text-center lg:text-left">
-                    <h2 class="text-3xl lg:text-5xl font-bold text-dark-green leading-tight mb-4">
+                <div class="lg:w-1/2 text-center lg:text-left fade-in">
+                    <h2 class="text-3xl lg:text-5xl font-bold text-royal-blue leading-tight mb-4">
                         Extended life technology for better results
                     </h2>
                     <p class="text-lg text-gray-600 max-w-lg mb-6 mx-auto lg:mx-0">
-                        The Otach Smartwatch is engineered to last, with a durable battery and a range of features that make it the perfect companion for your active lifestyle.
+                        The Imperion Smartwatch is engineered to last, with a durable battery and a range of features that make it the perfect companion for your active lifestyle.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- Product Showcase Section -->
-        <section class="bg-light-green py-16 lg:py-24">
+        <section class="bg-blue-gray py-16 lg:py-24">
             <div class="container px-6 text-center">
-                <h2 class="text-3xl lg:text-5xl font-bold text-dark-green mb-12">Our Special Addition</h2>
+                <h2 class="text-3xl lg:text-5xl font-bold text-royal-blue mb-12 fade-in">Our Special Addition</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Product Card 1 -->
-                    <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center">
-                        <img src="https://placehold.co/400x400/1d404d/bde9d8?text=Watch+1" alt="Zenith carbon" class="w-full rounded-2xl mb-4">
-                        <h3 class="font-bold text-dark-green text-xl mb-1">Zenith carbon</h3>
+                    <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center fade-in hover-effect">
+                        <img src="Image resource/watch-1.png" alt="Zenith carbon" class="w-full rounded-2xl mb-4">
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Zenith carbon</h3>
                         <p class="text-gray-600 mb-4">$1400.00</p>
                         <div class="flex space-x-2 mb-4">
                             <span class="w-4 h-4 rounded-full bg-black border-2 border-gray-400"></span>
                             <span class="w-4 h-4 rounded-full bg-white border-2 border-gray-400"></span>
                             <span class="w-4 h-4 rounded-full bg-yellow-600 border-2 border-gray-400"></span>
                         </div>
-                        <button class="bg-dark-green text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                        <button class="bg-royal-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Add to Cart</button>
                     </div>
                     <!-- Product Card 2 -->
-                    <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center">
-                        <img src="https://placehold.co/400x400/bde9d8/1d404d?text=Watch+2" alt="Celestial Timekeeper" class="w-full rounded-2xl mb-4">
-                        <h3 class="font-bold text-dark-green text-xl mb-1">Celestial Timekeeper</h3>
+                    <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.1s;">
+                        <img src="Image resource/watch-2.png" alt="Zenith carbon" class="w-full rounded-2xl mb-4">
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Celestial Timekeeper</h3>
                         <p class="text-gray-600 mb-4">$1400.00</p>
                         <div class="flex space-x-2 mb-4">
                             <span class="w-4 h-4 rounded-full bg-black border-2 border-gray-400"></span>
                             <span class="w-4 h-4 rounded-full bg-white border-2 border-gray-400"></span>
                             <span class="w-4 h-4 rounded-full bg-yellow-600 border-2 border-gray-400"></span>
                         </div>
-                        <button class="bg-dark-green text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                        <button class="bg-royal-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Add to Cart</button>
                     </div>
                     <!-- Product Card 3 -->
-                    <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center">
-                        <img src="https://placehold.co/400x400/1d404d/bde9d8?text=Watch+3" alt="Jompara Classic" class="w-full rounded-2xl mb-4">
-                        <h3 class="font-bold text-dark-green text-xl mb-1">Jompara Classic</h3>
+                    <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.2s;">
+                        <img src="Image resource/watch-3.png" alt="Zenith carbon" class="w-full rounded-2xl mb-4">
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Jompara Classic</h3>
                         <p class="text-gray-600 mb-4">$1400.00</p>
                         <div class="flex space-x-2 mb-4">
                             <span class="w-4 h-4 rounded-full bg-black border-2 border-gray-400"></span>
                             <span class="w-4 h-4 rounded-full bg-white border-2 border-gray-400"></span>
                             <span class="w-4 h-4 rounded-full bg-yellow-600 border-2 border-gray-400"></span>
                         </div>
-                        <button class="bg-dark-green text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                        <button class="bg-royal-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Add to Cart</button>
                     </div>
                 </div>
-                <button class="mt-12 bg-gray-300 text-dark-green px-8 py-3 rounded-full font-semibold hover:bg-gray-400 transition-colors">View All Product</button>
+                <button class="mt-12 bg-gray-300 text-royal-blue px-8 py-3 rounded-full font-semibold hover:bg-gray-400 transition-colors btn-hover-scale">View All Product</button>
             </div>
         </section>
 
         <!-- Latest Release Section -->
         <section class="bg-white py-16 lg:py-24">
             <div class="container px-6 flex flex-col lg:flex-row items-center justify-between">
-                <div class="lg:w-1/2 mb-10 lg:mb-0">
-                    <h2 class="text-3xl lg:text-5xl font-bold text-dark-green leading-tight mb-4">Discover The Latest Release</h2>
+                <div class="lg:w-1/2 mb-10 lg:mb-0 fade-in">
+                    <h2 class="text-3xl lg:text-5xl font-bold text-royal-blue leading-tight mb-4">Discover The Latest Release</h2>
                     <p class="text-lg text-gray-600 mb-6 max-w-md">
-                        Otach smartwatches are packed with advanced technology to help you stay connected, informed, and in control. From GPS and heart rate monitoring to NFC payments, our smartwatches are designed to make your life easier and more efficient.
+                        Imperion smartwatches are packed with advanced technology to help you stay connected, informed, and in control. From GPS and heart rate monitoring to NFC payments, our smartwatches are designed to make your life easier and more efficient.
                     </p>
                 </div>
-                <div class="lg:w-1/2 flex justify-center lg:justify-end">
-                    <img src="https://placehold.co/600x400/bde9d8/1d404d?text=Watch+Release+Image" alt="Latest Release" class="w-full max-w-2xl rounded-3xl shadow-lg-custom">
+                <div class="lg:w-1/2 flex justify-center lg:justify-end fade-in">
+                    <img src="Image resource/smart-watch-1.png" alt="Latest Release" class="w-full max-w-2xl rounded-3xl shadow-lg-custom hover-effect">
                 </div>
             </div>
         </section>
 
         <!-- Crystal Display Section -->
-        <section class="bg-dark-green py-16 lg:py-24 text-white">
+        <section class="bg-royal-blue py-16 lg:py-24 text-white">
             <div class="container px-6 text-center">
-                <h2 class="text-3xl lg:text-5xl font-bold mb-4">Meet the sappier crystal display</h2>
-                <p class="text-gray-300 mb-12 max-w-xl mx-auto">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-4 fade-in">Meet the sappier crystal display</h2>
+                <p class="text-gray-300 mb-12 max-w-xl mx-auto fade-in">
                     We've combined the power of a smartwatch with the classic elegance of a timepiece. Our watches feature a durable and scratch-resistant sapphire crystal display that provides a clear and vibrant viewing experience.
                 </p>
                 <div class="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
-                    <img src="https://placehold.co/400x400/bde9d8/1d404d?text=Watch+A" alt="Watch A" class="w-full max-w-sm rounded-3xl shadow-lg-custom">
-                    <img src="https://placehold.co/400x400/bde9d8/1d404d?text=Watch+B" alt="Watch B" class="w-full max-w-sm rounded-3xl shadow-lg-custom">
-                    <img src="https://placehold.co/400x400/bde9d8/1d404d?text=Watch+C" alt="Watch C" class="w-full max-w-sm rounded-3xl shadow-lg-custom">
+                    <img src="Image resource/watch-4.png" alt="Watch B" class="w-full max-w-sm rounded-3xl shadow-lg-custom fade-in hover-effect" style="transition-delay: 0.1s;">
+                    <img src="Image resource/watch-5.png" alt="Watch B" class="w-full max-w-sm rounded-3xl shadow-lg-custom fade-in hover-effect" style="transition-delay: 0.1s;">
+                    <img src="Image resource/watch-6.png" alt="Watch B" class="w-full max-w-sm rounded-3xl shadow-lg-custom fade-in hover-effect" style="transition-delay: 0.1s;">
                 </div>
             </div>
         </section>
@@ -259,128 +337,927 @@
                             <span class="text-lg font-medium">LuminEdge Chrono</span>
                             <span class="text-dark-green font-bold">+</span>
                         </div>
-                        <!-- Item 5 -->
-                        <div class="flex items-center justify-between p-4 bg-gray-100 rounded-3xl shadow-md">
-                            <span class="text-dark-green font-semibold">05</span>
-                            <span class="text-lg font-medium">Equinox Horizon</span>
-                            <span class="text-dark-green font-bold">+</span>
-                        </div>
-                        <!-- Item 6 -->
-                        <div class="flex items-center justify-between p-4 bg-gray-100 rounded-3xl shadow-md">
-                            <span class="text-dark-green font-semibold">06</span>
-                            <span class="text-lg font-medium">Solstice Commander</span>
-                            <span class="text-dark-green font-bold">+</span>
-                        </div>
                     </div>
                     <div class="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <!-- Watch Image 1 -->
                         <div class="relative">
-                            <img src="https://placehold.co/400x600/bde9d8/1d404d?text=Watch+Premium+1" alt="Watch Premium 1" class="w-full rounded-3xl shadow-lg-custom">
+                            <img src="https://s.alicdn.com/@sc04/kf/H7b968b7c25884ac2b1972261ab7bf150B/Watch-Manufacturer-Original-Custom-High-Quality-Luxury-Gold-Waterproof-Men-Watch-Multifunctional-Chronograph-Luminous-Wristwatch.jpg" alt="Watch Premium 1" class="w-full rounded-3xl shadow-lg-custom">
                             <div class="absolute top-4 right-4 bg-white px-4 py-1 rounded-full text-dark-green font-semibold text-sm">Best Seller</div>
                         </div>
                         <!-- Watch Image 2 -->
                         <div class="relative">
-                            <img src="https://placehold.co/400x600/1d404d/bde9d8?text=Watch+Premium+2" alt="Watch Premium 2" class="w-full rounded-3xl shadow-lg-custom">
+                            <img src="https://m.media-amazon.com/images/I/71Qg0ZeMWBL._UY1000_.jpg" alt="Watch Premium 2" class="w-full rounded-3xl shadow-lg-custom">
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Newsletter Section -->
-        <section class="bg-gradient-custom py-16 lg:py-24 text-white text-center">
-            <div class="container px-6">
-                <h2 class="text-3xl lg:text-5xl font-bold mb-4">Subscribe for exclusive Updates!</h2>
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <input type="email" placeholder="Your email address" class="w-full sm:w-80 p-3 rounded-full text-dark-green" required>
-                    <button class="bg-dark-green text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Subscribe Now</button>
+        </section>
+        <section class="bg-blue-gray py-12 lg:py-16">
+            <div class="container px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- 100% Original -->
+                <div class="flex flex-col items-center p-4 rounded-xl">
+                    <svg class="w-12 h-12 text-royal-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.135a9 9 0 11-12.637 12.637m12.637-4.135a9 9 0 010 12.637"></path>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-royal-blue">100% ORIGINAL</h3>
+                </div>
+
+                <!-- 7 Day Return -->
+                <div class="flex flex-col items-center p-4 rounded-xl">
+                    <svg class="w-12 h-12 text-royal-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.416 11H19v-5h-.582m0 0a2 2 0 10-3.416 3.416m3.416-3.416a2 2 0 11-3.416-3.416M19 18H9.778a2 2 0 01-1.414-.586l-1.586-1.586a2 2 0 00-1.414-.586H2m5.82 2h6.416m-6.416 0a2 2 0 10-3.416 3.416m3.416-3.416a2 2 0 11-3.416-3.416"></path>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-royal-blue">7 DAY RETURN</h3>
+                </div>
+
+                <!-- Free Shipping -->
+                <div class="flex flex-col items-center p-4 rounded-xl">
+                    <svg class="w-12 h-12 text-royal-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.933 1.567 3.5 3.5 3.5s3.5-1.567 3.5-3.5-1.567-3.5-3.5-3.5-3.5 1.567-3.5 3.5zm-5-3.5c0 1.933-1.567 3.5-3.5 3.5s-3.5-1.567-3.5-3.5 1.567-3.5 3.5-3.5 3.5 1.567 3.5 3.5zm-3.5 5.5l14 0m-14 0l-1-2c-1.5 0-2.5 1.5-2.5 3s1 3 2.5 3l16 0c1.5 0 2.5-1.5 2.5-3s-1-3-2.5-3l-1-2"></path>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-royal-blue">FREE SHIPPING</h3>
                 </div>
             </div>
         </section>
+        <!-- Login Section -->
+        <section class="py-16 bg-white fade-in">
+            <div class="container px-6 text-center">
+                <h2 class="text-2xl font-bold text-royal-blue mb-6">LOGIN FOR THE BEST EXPERIENCE</h2>
+                <button onclick="showPage('account-section')" class="bg-royal-blue text-white font-semibold px-8 py-3 rounded-full hover:bg-opacity-90 transition-colors btn-hover-scale">LOGIN NOW</button>
+                <div class="mt-4">
+                    <a href="#" onclick="showPage('account-section')" class="text-royal-blue underline font-semibold">Create An Account</a>
+                </div>
+            </div>
+        </section>
+            
+        </section>
     </section>
 
-    <!-- New Page Sections -->
-    <section id="shop-section" class="py-24 hidden">
-        <div class="container px-6 text-center">
-            <h1 class="text-5xl font-bold text-dark-green mb-8">Shop</h1>
-            <p class="text-lg text-gray-600">Explore our full collection of watches, including the latest models and limited editions.</p>
+    <!-- Features Bar Section -->
+        <section class="bg-blue-gray py-12 lg:py-16">
+            <div class="container px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <!-- 100% Original -->
+                <div class="flex flex-col items-center p-4 rounded-xl">
+                    <svg class="w-12 h-12 text-royal-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.135a9 9 0 11-12.637 12.637m12.637-4.135a9 9 0 010 12.637"></path>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-royal-blue">100% ORIGINAL</h3>
+                </div>
+
+                <!-- 7 Day Return -->
+                <div class="flex flex-col items-center p-4 rounded-xl">
+                    <svg class="w-12 h-12 text-royal-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.416 11H19v-5h-.582m0 0a2 2 0 10-3.416 3.416m3.416-3.416a2 2 0 11-3.416-3.416M19 18H9.778a2 2 0 01-1.414-.586l-1.586-1.586a2 2 0 00-1.414-.586H2m5.82 2h6.416m-6.416 0a2 2 0 10-3.416 3.416m3.416-3.416a2 2 0 11-3.416-3.416"></path>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-royal-blue">7 DAY RETURN</h3>
+                </div>
+
+                <!-- Free Shipping -->
+                <div class="flex flex-col items-center p-4 rounded-xl">
+                    <svg class="w-12 h-12 text-royal-blue mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 1.933 1.567 3.5 3.5 3.5s3.5-1.567 3.5-3.5-1.567-3.5-3.5-3.5-3.5 1.567-3.5 3.5zm-5-3.5c0 1.933-1.567 3.5-3.5 3.5s-3.5-1.567-3.5-3.5 1.567-3.5 3.5-3.5 3.5 1.567 3.5 3.5zm-3.5 5.5l14 0m-14 0l-1-2c-1.5 0-2.5 1.5-2.5 3s1 3 2.5 3l16 0c1.5 0 2.5-1.5 2.5-3s-1-3-2.5-3l-1-2"></path>
+                    </svg>
+                    <h3 class="text-lg font-semibold text-royal-blue">FREE SHIPPING</h3>
+                </div>
+            </div>
+        </section>
+        <!-- Login Section -->
+        <section class="py-16 bg-white fade-in">
+            <div class="container px-6 text-center">
+                <h2 class="text-2xl font-bold text-royal-blue mb-6">LOGIN FOR THE BEST EXPERIENCE</h2>
+                <button onclick="showPage('account-section')" class="bg-royal-blue text-white font-semibold px-8 py-3 rounded-full hover:bg-opacity-90 transition-colors btn-hover-scale">LOGIN NOW</button>
+                <div class="mt-4">
+                    <a href="#" onclick="showPage('account-section')" class="text-royal-blue underline font-semibold">Create An Account</a>
+                </div>
+            </div>
+        </section>
+    
+    <!-- About Section -->
+    <section id="about-section" class="py-24 hidden page-transition">
+        <div class="container px-6">
+            <!-- Achievements -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center mb-16">
+                <div class="flex flex-col items-center fade-in">
+                    <div class="flex items-center justify-center w-20 h-20 rounded-full bg-royal-blue text-white text-2xl mb-4">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-11v4h2v-4h-2z"/></svg>
+                    </div>
+                    <span class="text-xl font-bold text-royal-blue">25+</span>
+                    <p class="text-gray-600">Years of Excellence</p>
+                </div>
+                <div class="flex flex-col items-center fade-in" style="transition-delay: 0.1s;">
+                    <div class="flex items-center justify-center w-20 h-20 rounded-full bg-royal-blue text-white text-2xl mb-4">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 11.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zm0 2c-2.73 0-5 2.27-5 5h10c0-2.73-2.27-5-5-5z"/></svg>
+                    </div>
+                    <span class="text-xl font-bold text-royal-blue">150+</span>
+                    <p class="text-gray-600">Master Craftsman</p>
+                </div>
+                <div class="flex flex-col items-center fade-in" style="transition-delay: 0.2s;">
+                    <div class="flex items-center justify-center w-20 h-20 rounded-full bg-royal-blue text-white text-2xl mb-4">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.29-10.71l-2.82 2.82 1.41 1.41 1.41-1.41 2.82 2.82 1.41-1.41-2.82-2.82 1.41-1.41-1.41-1.41z"/></svg>
+                    </div>
+                    <span class="text-xl font-bold text-royal-blue">5+</span>
+                    <p class="text-gray-600">Countries Worldwide</p>
+                </div>
+                <div class="flex flex-col items-center fade-in" style="transition-delay: 0.3s;">
+                    <div class="flex items-center justify-center w-20 h-20 rounded-full bg-royal-blue text-white text-2xl mb-4">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27l-5.18 2.73 1-5.83-4.24-4.14 5.86-.85 2.62-5.32 2.62 5.32 5.86.85-4.24 4.14 1 5.83z"/></svg>
+                    </div>
+                    <span class="text-xl font-bold text-royal-blue">20+</span>
+                    <p class="text-gray-600">Design Awards</p>
+                </div>
+            </div>
+
+            <!-- Our Story -->
+            <div class="flex flex-col lg:flex-row items-center justify-between mb-16">
+                <div class="lg:w-1/2 pr-10 mb-8 lg:mb-0 fade-in">
+                    <h2 class="text-3xl font-bold text-royal-blue mb-4">Our Story</h2>
+                    <p class="text-gray-600 mb-4">
+                        Founded in 2000s by master craftsman Sara Sinha in the heart of India, our brand began with a simple vision: to create timepieces that would stand the test of time.
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        What started as a small workshop has grown into a globally recognized brand, yet we've never lost sight of our core values: precision, quality, and timeless design.
+                    </p>
+                    <p class="text-gray-600">
+                        Today, each Imperion Watches is still meticulously crafted by hand, combining traditional techniques with cutting-edge technology to create timepieces that are both beautiful and reliable.
+                    </p>
+                </div>
+                <div class="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-4 fade-in">
+                    <img src="Image resource/crafting.png" alt="Watch Crafting" class="w-full rounded-2xl shadow-md hover-effect">
+                    <img src="Image resource/mechanism.png" alt="Watch Crafting" class="w-full rounded-2xl shadow-md hover-effect">
+                </div>
+            </div>
+
+            <!-- Our Values -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-royal-blue mb-2 fade-in">Our Values</h2>
+                <p class="text-gray-600 mb-8 fade-in">These principles guide everything we do, from design to delivery.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg-custom flex flex-col items-center fade-in hover-effect">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-blue-gray text-royal-blue text-2xl mb-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-royal-blue mb-2">Excellence</h3>
+                        <p class="text-gray-600 text-sm text-center">
+                            We never compromise on quality. Every component is rigorously tested and every process is refined to achieve perfection.
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.1s;">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-blue-gray text-royal-blue text-2xl mb-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-royal-blue mb-2">Tradition</h3>
+                        <p class="text-gray-600 text-sm text-center">
+                            We honor the time-tested methods of Swiss watchmaking while embracing innovation to create timeless pieces.
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.2s;">
+                        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-blue-gray text-royal-blue text-2xl mb-4">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 13c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-royal-blue mb-2">Craftsmanship</h3>
+                        <p class="text-gray-600 text-sm text-center">
+                            Our master craftsmen bring decades of experience to every watch, ensuring each piece meets our exacting standards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meet Our Masters -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-royal-blue mb-2 fade-in">Meet Our Masters</h2>
+                <p class="text-gray-600 mb-8 fade-in">The talented individuals behind every Imperion Watches timepiece.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Master 1 -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg-custom flex flex-col items-center fade-in hover-effect">
+                        <img src="https://placehold.co/120x120/1d404d/e6f0f5?text=Marcus+Chen" alt="Marcus+Chen" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold text-royal-blue">Manisha Tripathi</h3>
+                        <p class="text-gray-600">Master Watchmaker</p>
+                        <p class="text-sm text-gray-500">25 years of experience</p>
+                    </div>
+                    <!-- Master 2 -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.1s;">
+                        <img src="https://placehold.co/120x120/1d404d/e6f0f5?text=Elena+Rodriguez" alt="Elena+Rodriguez" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold text-royal-blue">Abhinav Kumar</h3>
+                        <p class="text-gray-600">Design Director</p>
+                        <p class="text-sm text-gray-500">18 years of experience</p>
+                    </div>
+                    <!-- Master 3 -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.2s;">
+                        <img src="https://placehold.co/120x120/1d404d/e6f0f5?text=James+Thompson" alt="James+Thompson" class="w-32 h-32 rounded-full mb-4">
+                        <h3 class="text-xl font-bold text-royal-blue">Preeti sharma</h3>
+                        <p class="text-gray-600">Quality Assurance Lead</p>
+                        <p class="text-sm text-gray-500">22 years of experience</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Customer Testimonials -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-royal-blue mb-2 fade-in">What Our Customers Say</h2>
+                <p class="text-gray-600 mb-8 fade-in">Hear from real people who love their Imperion Watches.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-lg-custom fade-in hover-effect">
+                        <p class="text-gray-600 mb-4">"I've owned many luxury watches, but the Imperion Watches has impressed me the most. The craftsmanship is flawless, and it's incredibly durable."</p>
+                        <div class="text-sm font-semibold text-royal-blue">- Michael S.</div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-lg-custom fade-in hover-effect" style="transition-delay: 0.1s;">
+                        <p class="text-gray-600 mb-4">"The customer service was fantastic, and the watch itself is a work of art. I get compliments on it everywhere I go."</p>
+                        <div class="text-sm font-semibold text-royal-blue">- Jessica L.</div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white p-8 rounded-3xl shadow-lg-custom fade-in hover-effect" style="transition-delay: 0.2s;">
+                        <p class="text-gray-600 mb-4">"This watch is perfect for my active lifestyle. It's tough, stylish, and the battery life is amazing. Couldn't be happier!"</p>
+                        <div class="text-sm font-semibold text-royal-blue">- David R.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Otach Excellence -->
+            <div class="bg-gradient-custom py-16 px-8 rounded-3xl text-center text-white fade-in hover-effect">
+                <h2 class="text-3xl font-bold mb-4">Experience Imperion Excellence</h2>
+                <p class="text-lg mb-8">
+                    Visit our showroom or explore our collection online to discover the perfect timepiece for you.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-white text-royal-blue px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors btn-hover-scale">Visit Showroom</button>
+                    <button class="bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Browse Collection</button>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="brands-section" class="py-24 hidden">
-        <div class="container px-6 text-center">
-            <h1 class="text-5xl font-bold text-dark-green mb-8">Brands</h1>
-            <p class="text-lg text-gray-600">Discover the unique craftsmanship and stories behind each of our partner brands.</p>
+    <!-- Shop Section -->
+    <section id="shop-section" class="py-24 hidden page-transition">
+        <div class="container px-6">
+            <div class="flex flex-wrap justify-between items-center mb-12 space-y-4 md:space-y-0">
+                <h1 class="text-4xl font-bold text-royal-blue">Shop All</h1>
+                <div class="flex flex-wrap items-center space-x-2 space-y-2 md:space-y-0">
+                    <button class="filter-button px-4 py-2 rounded-full font-medium text-white bg-royal-blue" data-filter="all">All</button>
+                    <button class="filter-button px-4 py-2 rounded-full font-medium text-gray-600 bg-white shadow-sm" data-filter="premium">Premium Collection</button>
+                    <button class="filter-button px-4 py-2 rounded-full font-medium text-gray-600 bg-white shadow-sm" data-filter="limited">Limited Edition</button>
+                    <button class="filter-button px-4 py-2 rounded-full font-medium text-gray-600 bg-white shadow-sm" data-filter="signature">Signature Series</button>
+                    <button class="filter-button px-4 py-2 rounded-full font-medium text-gray-600 bg-white shadow-sm" data-filter="elite">Elite Collection</button>
+                    <button class="filter-button px-4 py-2 rounded-full font-medium text-gray-600 bg-white shadow-sm" data-filter="luxury">Luxury Series</button>
+                </div>
+            </div>
+            
+            <div id="shop-items-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Watch Card 1 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" data-watch-id="classic-carbon" data-collection="premium" data-keywords="classic, carbon, luxury, smart">
+                    <div class="card-image">
+                        <img src="Image resource/shop-1.png" alt="Classic Carbon Premium" class="w-full rounded-2xl mb-4 cursor-pointer" onclick="showProductDetails('classic-carbon')">
+                        <div class="sale-badge">Sale</div>
+                        <div class="heart-icon" onclick="toggleFavorite('classic-carbon')">
+                            <svg class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <p class="text-sm text-gray-500 mb-1">Premium Collection</p>
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Classic Carbon Premium</h3>
+                        <div class="flex items-center text-yellow-500 text-sm mb-2">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                            <span class="text-gray-500 ml-2">(124 reviews)</span>
+                        </div>
+                        <div class="flex items-baseline space-x-2 mb-4">
+                            <span class="text-2xl font-bold text-royal-blue">$850</span>
+                            <span class="text-gray-400 line-through">$1,290</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Watch Card 2 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" data-watch-id="grandale-timekeeper" data-collection="limited" data-keywords="grandale, limited, modern, gold, luxury">
+                    <div class="card-image">
+                        <img src="Image resource/shop-2.png" alt="Classic Carbon Premium" class="w-full rounded-2xl mb-4 cursor-pointer" onclick="showProductDetails('classic-carbon')">
+                        <div class="new-badge">New</div>
+                        <div class="heart-icon" onclick="toggleFavorite('grandale-timekeeper')">
+                            <svg class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <p class="text-sm text-gray-500 mb-1">Limited Edition</p>
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Grandale Timekeeper Elite</h3>
+                        <div class="flex items-center text-yellow-500 text-sm mb-2">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                            <span class="text-gray-500 ml-2">(89 reviews)</span>
+                        </div>
+                        <div class="flex items-baseline space-x-2 mb-4">
+                            <span class="text-2xl font-bold text-royal-blue">$1,240</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Watch Card 3 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" data-watch-id="signature-genesis" data-collection="signature" data-keywords="genesis, signature, sport, black, durable">
+                    <div class="card-image">
+                        <img src="Image resource/shop-3.png" alt="Classic Carbon Premium" class="w-full rounded-2xl mb-4 cursor-pointer" onclick="showProductDetails('classic-carbon')">
+                        <div class="heart-icon" onclick="toggleFavorite('signature-genesis')">
+                            <svg class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <p class="text-sm text-gray-500 mb-1">Signature Series</p>
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Signature Genesis Pro</h3>
+                        <div class="flex items-center text-yellow-500 text-sm mb-2">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            <span class="text-gray-500 ml-2">(156 reviews)</span>
+                        </div>
+                        <div class="flex items-baseline space-x-2 mb-4">
+                            <span class="text-2xl font-bold text-royal-blue">$2,150</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Watch Card 4 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" data-watch-id="apex-elite" data-collection="elite" data-keywords="apex, elite, precision, chronograph">
+                    <div class="card-image">
+                        <img src="Image resource/shop-4.png" alt="Classic Carbon Premium" class="w-full rounded-2xl mb-4 cursor-pointer" onclick="showProductDetails('classic-carbon')">
+                        <div class="new-badge">New</div>
+                        <div class="heart-icon" onclick="toggleFavorite('apex-elite')">
+                            <svg class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <p class="text-sm text-gray-500 mb-1">Elite Collection</p>
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Apex Elite Precision</h3>
+                        <div class="flex items-center text-yellow-500 text-sm mb-2">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                            <span class="text-gray-500 ml-2">(67 reviews)</span>
+                        </div>
+                        <div class="flex items-baseline space-x-2 mb-4">
+                            <span class="text-2xl font-bold text-royal-blue">$3,200</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Watch Card 5 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" data-watch-id="celestial-timekeeper" data-collection="luxury" data-keywords="celestial, luxury, black, sleek">
+                    <div class="card-image">
+                        <img src="Image resource/shop-5.png" alt="Classic Carbon Premium" class="w-full rounded-2xl mb-4 cursor-pointer" onclick="showProductDetails('classic-carbon')">
+                        <div class="heart-icon" onclick="toggleFavorite('celestial-timekeeper')">
+                            <svg class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <p class="text-sm text-gray-500 mb-1">Luxury Series</p>
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Celestial Timekeeper</h3>
+                        <div class="flex items-center text-yellow-500 text-sm mb-2">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                            <span class="text-gray-500 ml-2">(43 reviews)</span>
+                        </div>
+                        <div class="flex items-baseline space-x-2 mb-4">
+                            <span class="text-2xl font-bold text-royal-blue">$4,150</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Watch Card 6 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" data-watch-id="urban-explorer" data-collection="sport" data-keywords="urban, explorer, sport, durable, active">
+                    <div class="card-image">
+                        <img src="Image resource/shop-6.png" alt="Classic Carbon Premium" class="w-full rounded-2xl mb-4 cursor-pointer" onclick="showProductDetails('classic-carbon')">
+                        <div class="sale-badge">Sale</div>
+                        <div class="heart-icon" onclick="toggleFavorite('urban-explorer')">
+                            <svg class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <p class="text-sm text-gray-500 mb-1">Sport Collection</p>
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Urban Explorer</h3>
+                        <div class="flex items-center text-yellow-500 text-sm mb-2">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            <span class="text-gray-500 ml-2">(201 reviews)</span>
+                        </div>
+                        <div class="flex items-baseline space-x-2 mb-4">
+                            <span class="text-2xl font-bold text-royal-blue">$680</span>
+                            <span class="text-gray-400 line-through">$850</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Watch Card 7 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" data-watch-id="time-traveler" data-collection="limited" data-keywords="time, traveler, limited, classic, pilot">
+                    <div class="card-image">
+                        <img src="Image resource/shop-7.png" alt="Classic Carbon Premium" class="w-full rounded-2xl mb-4 cursor-pointer" onclick="showProductDetails('classic-carbon')">
+                        <div class="heart-icon" onclick="toggleFavorite('time-traveler')">
+                            <svg class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <p class="text-sm text-gray-500 mb-1">Limited Edition</p>
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Time Traveler</h3>
+                        <div class="flex items-center text-yellow-500 text-sm mb-2">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                            <span class="text-gray-500 ml-2">(95 reviews)</span>
+                        </div>
+                        <div class="flex items-baseline space-x-2 mb-4">
+                            <span class="text-2xl font-bold text-royal-blue">$1,500</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Watch Card 8 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" data-watch-id="chrono-master" data-collection="elite" data-keywords="chrono, master, elite, racing, precision">
+                    <div class="card-image">
+                        <img src="Image resource/shop-8.png" alt="Classic Carbon Premium" class="w-full rounded-2xl mb-4 cursor-pointer" onclick="showProductDetails('classic-carbon')">
+                        <div class="heart-icon" onclick="toggleFavorite('chrono-master')">
+                            <svg class="w-6 h-6 text-gray-400 hover:text-red-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <p class="text-sm text-gray-500 mb-1">Elite Collection</p>
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Chrono Master</h3>
+                        <div class="flex items-center text-yellow-500 text-sm mb-2">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            <span class="text-gray-500 ml-2">(255 reviews)</span>
+                        </div>
+                        <div class="flex items-baseline space-x-2 mb-4">
+                            <span class="text-2xl font-bold text-royal-blue">$2,800</span>
+                        </div>
+                        <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="editorial-section" class="py-24 hidden">
-        <div class="container px-6 text-center">
-            <h1 class="text-5xl font-bold text-dark-green mb-8">Editorial</h1>
-            <p class="text-lg text-gray-600">Read our latest articles, guides, and interviews on the world of watches and technology.</p>
+    <section id="press-section" class="py-24 hidden page-transition">
+        <div class="container px-6">
+            <h1 class="text-5xl font-bold text-royal-blue text-center mb-8">In the Press</h1>
+            <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">Stay up to date with our latest news and features in the media. Here’s what everyone is saying about our watches.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- News Card 1 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect">
+                    <img src="Image resource/press-1.png" alt="News article image 1" class="w-full rounded-2xl mb-4">
+                    <p class="text-sm text-gray-500 mb-2">@TechTime_Daily</p>
+                    <h3 class="text-xl font-bold text-royal-blue mb-2">Imperion's New Factory Sets a Benchmark for Precision Production</h3>
+                    <p class="text-gray-600 mb-4">
+                        "We were blown away by the meticulous craftsmanship and innovative processes at Imperion's new production facility. Their dedication to quality is truly second to none."
+                    </p>
+                    <a href="#" class="text-royal-blue font-semibold hover:underline">Read More →</a>
+                </div>
+
+                <!-- News Card 2 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" style="transition-delay: 0.1s;">
+                    <img src="Image resource/press-2.png" alt="News article image 1" class="w-full rounded-2xl mb-4">
+                    <p class="text-sm text-gray-500 mb-2">@LuxuryLifestyle_Mag</p>
+                    <h3 class="text-xl font-bold text-royal-blue mb-2">The Timeless Excellence Imperion's Signature Series</h3>
+                    <p class="text-gray-600 mb-4">
+                        "Imperion Watches continues to define luxury with their latest Signature Series. Every detail, from the sapphire crystal to the hand-finished movement, speaks to a legacy of excellence."
+                    </p>
+                    <a href="#" class="text-royal-blue font-semibold hover:underline">Read More →</a>
+                </div>
+
+                <!-- News Card 4 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" style="transition-delay: 0.3s;">
+                    <img src="Image resource/press-3.png" alt="News article image 1" class="w-full rounded-2xl mb-4">
+                    <h3 class="text-xl font-bold text-royal-blue mb-2">Excellence in Every Tick: A Deep Dive into Imperion Watches's Craftsmanship</h3>
+                    <p class="text-gray-600 mb-4">
+                        "From the initial design to the final polish, Imperion's master watchmakers demonstrate a level of skill and dedication rarely seen. Their quality assurance is top-tier."
+                    </p>
+                    <a href="#" class="text-royal-blue font-semibold hover:underline">Read More →</a>
+                </div>
+
+                <!-- News Card 5 -->
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect" style="transition-delay: 0.4s;">
+                    <img src="Image resource/press-4.png" alt="News article image 1" class="w-full rounded-2xl mb-4">
+                    <p class="text-sm text-gray-500 mb-2">@TheChronicle_Weekly</p>
+                    <h3 class="text-xl font-bold text-royal-blue mb-2">Imperion: The Perfect Blend of Tradition and Innovation in Watchmaking</h3>
+                    <p class="text-gray-600 mb-4">
+                        "Imperion is a brand that truly understands the balance between honoring tradition and embracing the future. Their production methods are a testament to this philosophy."
+                    </p>
+                    <a href="#" class="text-royal-blue font-semibold hover:underline">Read More →</a>
+                </div>
+            </div>
+
+            <!-- Newsletter Section -->
+            <section class="bg-gradient-custom py-16 px-8 rounded-3xl text-center text-white mt-16 fade-in hover-effect">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-4">Subscribe for exclusive Updates!</h2>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <input type="email" placeholder="Your email address" class="w-full sm:w-80 p-3 rounded-full text-royal-blue" required>
+                    <button class="bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Subscribe Now</button>
+                </div>
+            </section>
         </div>
     </section>
 
-    <section id="press-section" class="py-24 hidden">
-        <div class="container px-6 text-center">
-            <h1 class="text-5xl font-bold text-dark-green mb-8">Press</h1>
-            <p class="text-lg text-gray-600">Stay up to date with our latest news and features in the media.</p>
+    <!-- Contact Section -->
+    <section id="contact-section" class="py-24 hidden page-transition">
+        <div class="container px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg-custom fade-in hover-effect">
+                    <h2 class="text-3xl font-bold text-royal-blue mb-8">Send us a Message</h2>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="full-name" class="block text-sm font-medium text-gray-700">Full Name *</label>
+                                <input type="text" id="full-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-royal-blue focus:border-royal-blue">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email Address *</label>
+                                <input type="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-royal-blue focus:border-royal-blue">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                            <input type="tel" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-royal-blue focus:border-royal-blue">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700">Subject *</label>
+                            <select id="subject" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-royal-blue focus:border-royal-blue">
+                                <option>Select a subject</option>
+                                <option>General Inquiry</option>
+                                <option>Order Support</option>
+                                <option>Product Feedback</option>
+                                <option>Repair & Servicing</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message *</label>
+                            <textarea id="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-royal-blue focus:border-royal-blue"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Showroom and Services -->
+                <div class="space-y-8">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg-custom fade-in hover-effect" style="transition-delay: 0.1s;">
+                        <h2 class="text-3xl font-bold text-royal-blue mb-4">Visit Our Showrooms</h2>
+                        <!-- Geneva Showroom -->
+                        <div>
+                            <h3 class="text-xl font-bold text-royal-blue">New Delhi</h3>
+                            <p class="text-gray-600">123 Rajiv Chowk Road,Connaught Place, New Delhi, Delhi-110001</p>
+                            <div class="flex items-center space-x-2 text-gray-600 mt-2">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
+                                <span>+91 987654321</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-600">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 13c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                                <span>Newdelhi.showroom@Imperion.com</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-600">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 13c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                                <span>Mon-Sat: 9:00 AM - 7:00 PM</span>
+                            </div>
+                        </div>
+
+                        <!-- New York Showroom -->
+                        <div>
+                            <h3 class="text-xl font-bold text-royal-blue">Banglore</h3>
+                            <p class="text-gray-600">Shop No 77 &78, Next Deccan Herad, Mahatma Gandhi Rd, Haridevpur, Bengaluru, Karnataka-560001</p>
+                            <div class="flex items-center space-x-2 text-gray-600 mt-2">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
+                                <span>+91 964623478</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-600">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 13c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                                <span>Banglore.showroom@Imperion.com</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-600">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 13c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                                <span>Mon-Sat: 10:00 AM - 8:00 PM</span>
+                            </div>
+                        </div>
+
+                        <!-- Tokyo Showroom -->
+                        <div>
+                            <h3 class="text-xl font-bold text-royal-blue">Chennai</h3>
+                            <p class="text-gray-600">Near, Bus Depot, No. 82, S Usman Road, Postal Colony, T. Nagar, Chennai, Tamil Nadu 600017</p>
+                            <div class="flex items-center space-x-2 text-gray-600 mt-2">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 16c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
+                                <span>+91 981235678</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-600">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 13c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                                <span>chennai.showroom@Imperion.com</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-gray-600">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM12 13c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                                <span>Mon-Sun: 10:00 AM - 9:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Our Services -->
+                    <div class="bg-white p-8 rounded-3xl shadow-lg-custom fade-in hover-effect" style="transition-delay: 0.2s;">
+                        <h3 class="text-xl font-bold text-royal-blue mb-4">Our Services</h3>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li>Personal consultation and fitting</li>
+                            <li>Custom engraving services</li>
+                            <li>Watch repair and maintenance</li>
+                            <li>Warranty and after-sales support</li>
+                            <li>Trade-in and upgrade programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="mt-24">
+                <h2 class="text-3xl font-bold text-royal-blue text-center mb-4 fade-in">Frequently Asked Questions</h2>
+                <p class="text-lg text-gray-600 text-center mb-12 fade-in">Quick answers to common questions about our timepieces and services.</p>
+
+                <div id="faq-container" class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg-custom cursor-pointer fade-in hover-effect" onclick="toggleFAQ('faq1')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold text-royal-blue">What is the warranty period for Imperion watches?</h3>
+                            <span id="faq1-icon" class="text-royal-blue font-bold text-xl">+</span>
+                        </div>
+                        <div id="faq1-answer" class="hidden mt-4 text-gray-600">
+                            All Imperion watches come with a comprehensive 5-year international warranty covering manufacturing defects and movement issues.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg-custom cursor-pointer fade-in hover-effect" onclick="toggleFAQ('faq2')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold text-royal-blue">Do you offer custom engraving?</h3>
+                            <span id="faq2-icon" class="text-royal-blue font-bold text-xl">+</span>
+                        </div>
+                        <div id="faq2-answer" class="hidden mt-4 text-gray-600">
+                            Yes, we provide complimentary custom engraving services for all watch purchases. Our master engravers can personalize your timepiece with names, dates, or special messages.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg-custom cursor-pointer fade-in hover-effect" onclick="toggleFAQ('faq3')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold text-royal-blue">How often should I service my watch?</h3>
+                            <span id="faq3-icon" class="text-royal-blue font-bold text-xl">+</span>
+                        </div>
+                        <div id="faq3-answer" class="hidden mt-4 text-gray-600">
+                            We recommend servicing your Imperion Watches every 3-5 years to maintain optimal performance and preserve its longevity.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ 4 -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg-custom cursor-pointer fade-in hover-effect" onclick="toggleFAQ('faq4')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-semibold text-royal-blue">Do you offer international shipping?</h3>
+                            <span id="faq4-icon" class="text-royal-blue font-bold text-xl">+</span>
+                        </div>
+                        <div id="faq4-answer" class="hidden mt-4 text-gray-600">
+                            Yes, we offer worldwide shipping with full insurance and tracking. Delivery times vary by location, typically 3-7 business days for most destinations.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="contact-section" class="py-24 hidden">
-        <div class="container px-6 text-center">
-            <h1 class="text-5xl font-bold text-dark-green mb-8">Contact</h1>
-            <p class="text-lg text-gray-600">Get in touch with us for any inquiries, support, or feedback.</p>
+    <!-- Account Section -->
+    <section id="account-section" class="py-24 hidden page-transition">
+        <div class="container px-6 flex flex-col items-center">
+            <div class="w-full max-w-md bg-white p-8 rounded-3xl shadow-lg-custom text-center fade-in hover-effect">
+                <h2 class="text-3xl font-bold text-royal-blue mb-8">Login to Your Account</h2>
+                <form class="space-y-6">
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                        <input type="text" id="username" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-royal-blue focus:border-royal-blue">
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-3 focus:ring-royal-blue focus:border-royal-blue">
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Login</button>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        Don't have an account? <a href="#" class="text-royal-blue font-semibold hover:underline">Sign up now</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
-    <section id="account-section" class="py-24 hidden">
-        <div class="container px-6 text-center">
-            <h1 class="text-5xl font-bold text-dark-green mb-8">Account</h1>
-            <p class="text-lg text-gray-600">Manage your profile, view your order history, and track your shipments.</p>
+    <!-- Favorites Section -->
+    <section id="favorites-section" class="py-24 hidden page-transition">
+        <div class="container px-6">
+            <h1 class="text-5xl font-bold text-royal-blue text-center mb-8">Your Saved Watches</h1>
+            <p class="text-lg text-gray-600 text-center mb-12">All the watches you've added to your favorites will appear here.</p>
+            
+            <div id="favorites-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Favorite items will be dynamically added here -->
+            </div>
+
+            <div id="empty-favorites-message" class="text-center text-gray-500 hidden mt-12">
+                <p>You haven't added any watches to your favorites yet. Start browsing the <a href="#" onclick="showPage('shop-section')" class="text-royal-blue font-semibold hover:underline">shop</a> to find your next timepiece!</p>
+            </div>
         </div>
     </section>
 
-    <section id="pricelist-section" class="py-24 hidden">
-        <div class="container px-6 text-center">
-            <h1 class="text-5xl font-bold text-dark-green mb-8">Pricelist</h1>
-            <p class="text-lg text-gray-600">Browse our complete list of products and their prices.</p>
+    <!-- Product Details Section (hidden by default) -->
+    <section id="product-details-section" class="py-24 hidden page-transition">
+        <div class="container px-6">
+            <button onclick="showPage('shop-section')" class="flex items-center text-gray-600 hover:text-royal-blue mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Shop
+            </button>
+            <div id="product-details-content">
+                <!-- Product details will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Blog Section -->
+    <section id="editorial-section" class="py-24 hidden page-transition">
+        <div class="container px-6">
+            <h1 class="text-5xl font-bold text-royal-blue text-center mb-8">Our Blog</h1>
+            <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">Discover articles about watch care, history, and style to enhance your horological knowledge.</p>
+            <div id="blog-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog posts will be dynamically added here -->
+            </div>
         </div>
     </section>
 
 </main>
 
+<!-- Image Modal -->
+<div id="image-modal" class="fixed inset-0 bg-gray-900 bg-opacity-90 hidden flex items-center justify-center z-50 p-4">
+    <div class="relative">
+        <button class="absolute top-4 right-4 text-white text-3xl z-10" onclick="closeImageModal()">&times;</button>
+        <img id="modal-image" class="max-h-full max-w-full rounded-2xl">
+    </div>
+</div>
+
 <!-- Footer -->
-<footer class="bg-white py-10">
-    <div class="container px-6 text-center">
-        <h2 class="text-3xl lg:text-5xl font-bold text-dark-green mb-8">Otach</h2>
-        <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8 text-gray-600 mb-8">
-            <a href="#" onclick="showPage('shop-section')" class="hover:text-dark-green">Shop Our Product</a>
+<footer class="bg-blue- py-10 text-center">
+    <div class="container px-6 flex flex-col items-center">
+        <div class="flex items-center space-x-2 mb-2">
+            <a href="#" class="flex items-center space-x-2" onclick="showPage('home-section')">
+                <img src="Image resource/logo-2.png" alt="Otach Logo" class="h-10 w-auto">
+            <h2 class="text-3xl font-bold text-royal-blue">Imperion Watches</h2>
+        </div>
+        <p class="text-lg text-gray-600 mb-6">Crafting timeless moments since 1952</p>
+
+        <!-- Social Icons -->
+        <div class="flex space-x-6 mb-8 text-gray-500">
+            <a href="#" class="hover:text-royal-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.588-1.333h2.412v-5h-4c-4.195 0-5 3.058-5 5.768v2.232z"/></svg>
+            </a>
+            <a href="#" class="hover:text-royal-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.418 0-6.182 2.766-6.182 6.182 0 .485.055.957.147 1.411-5.148-.258-9.721-2.724-12.788-6.471-.532.912-.843 1.97-.843 3.102 0 2.145 1.089 4.043 2.748 5.146-1.01.03-1.961-.309-2.793-.769v.079c0 2.992 2.13 5.474 4.93 6.045-.514.139-1.055.209-1.608.209-.391 0-.773-.037-1.144-.109.78.24 1.916.852 3.594.861 2.748-2.145 4.194-5.068 4.194-8.156 0-.528-.029-1.05-.083-1.56.732-.544 1.369-1.229 1.874-2.009z"/></svg>
+            </a>
+            <a href="#" class="hover:text-royal-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.251-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.668.014-4.944.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.276-.073 1.685-.073 4.944s.014 3.668.072 4.944c.2 4.357 2.618 6.78 6.98 6.98 1.277.059 1.686.073 4.944.073s3.668-.014 4.944-.072c4.357-.2 6.78-2.618 6.979-6.98.06-1.276.074-1.685.074-4.944s-.014-3.668-.072-4.944c-.199-4.357-2.618-6.78-6.979-6.98-1.276-.059-1.685-.073-4.944-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" class="hover:text-royal-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.847.264-4.368 2.455-4.385 11.059 0 8.601.517 10.795 4.384 11.059 3.602.246 11.629.245 15.23 0 3.847-.264-4.367-2.456-4.384-11.059.007-8.604-.521-10.796-4.384-11.059zm-9.615 13.816v-8l6 4-6 4z"/></svg>
+            </a>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-8 text-gray-600 mb-6">
+            <a href="#" class="hover:text-royal-blue">Privacy Policy</a>
+            <a href="#" class="hover:text-royal-blue">Terms of Service</a>
+            <a href="#" class="hover:text-royal-blue">Contact Us</a>
+            <a href="#" class="hover:text-royal-blue">About Us</a>
         </div>
         <div class="h-px bg-gray-300 w-full mb-8"></div>
-        <div class="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
-            <span>©2024 All Rights Reserved.</span>
-            <div class="flex space-x-4">
-                <a href="#" class="hover:text-dark-green">Privacy Policy</a>
-                <a href="#" class="hover:text-dark-green">Terms & Condition</a>
-            </div>
-        </div>
+        <p class="text-sm text-gray-500">© 2025 Imperion Watches. All rights reserved.</p>
     </div>
 </footer>
 
 <script>
+    const watches = {
+        'classic-carbon': {
+            name: 'Classic Carbon Premium',
+            collection: 'Premium Collection',
+            price: 850,
+            originalPrice: 1290,
+            reviews: '(124 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>',
+            description: 'The Classic Carbon Premium is the pinnacle of modern craftsmanship. Its lightweight carbon case and precision-engineered movement make it the perfect choice for those who value both style and substance. It features a scratch-resistant sapphire crystal and is water-resistant up to 100 meters.',
+            features: ['Carbon fiber case', 'Sapphire crystal', '100m water resistance', 'Automatic movement'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Classic+Carbon+Premium'
+        },
+        'grandale-timekeeper': {
+            name: 'Grandale Timekeeper Elite',
+            collection: 'Limited Edition',
+            price: 1240,
+            originalPrice: null,
+            reviews: '(89 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>',
+            description: 'A masterpiece of design and technology, the Grandale Timekeeper Elite is a limited-edition piece that combines a rose-gold finish with a complex, multi-layered dial. It is a true collector\'s item, perfect for special occasions.',
+            features: ['Rose-gold finish', 'Chronograph functionality', 'Hand-wound movement', 'Limited to 500 units'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Grandale+Timekeeper+Elite'
+        },
+        'signature-genesis': {
+            name: 'Signature Genesis Pro',
+            collection: 'Signature Series',
+            price: 2150,
+            originalPrice: null,
+            reviews: '(156 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>',
+            description: 'Built for durability and performance, the Signature Genesis Pro is a rugged and reliable timepiece. Its black stainless steel case and robust strap make it ideal for everyday wear and adventure.',
+            features: ['Stainless steel case', 'Unidirectional bezel', '300m water resistance', 'Luminous hands and markers'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Signature+Genesis+Pro'
+        },
+        'apex-elite': {
+            name: 'Apex Elite Precision',
+            collection: 'Elite Collection',
+            price: 3200,
+            originalPrice: null,
+            reviews: '(67 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>',
+            description: 'The Apex Elite Precision is a chronograph built for speed and accuracy. Its intricate dial and high-precision quartz movement make it a favorite among racing enthusiasts and pilots.',
+            features: ['Chronograph subdials', 'Quartz movement', 'Tachymeter scale', 'Scratch-resistant glass'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Apex+Elite+Precision'
+        },
+        'celestial-timekeeper': {
+            name: 'Celestial Timekeeper',
+            collection: 'Luxury Series',
+            price: 4150,
+            originalPrice: null,
+            reviews: '(43 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>',
+            description: 'A symbol of elegance, the Celestial Timekeeper features a stunning deep blue dial and a sleek, minimalist design. It is the perfect accessory for formal events and discerning individuals.',
+            features: ['Deep blue dial', 'Minimalist design', 'Slim profile', 'Swiss-made movement'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Celestial+Timekeeper'
+        },
+        'urban-explorer': {
+            name: 'Urban Explorer',
+            collection: 'Sport Collection',
+            price: 680,
+            originalPrice: 850,
+            reviews: '(201 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>',
+            description: 'Designed for the modern adventurer, the Urban Explorer is a rugged yet stylish smartwatch. Its built-in GPS and fitness tracking capabilities make it the perfect companion for your active lifestyle.',
+            features: ['GPS tracking', 'Fitness monitoring', 'Waterproof design', 'Long-lasting battery'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Urban+Explorer'
+        },
+        'time-traveler': {
+            name: 'Time Traveler',
+            collection: 'Limited Edition',
+            price: 1500,
+            originalPrice: null,
+            reviews: '(95 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>',
+            description: 'A classic pilot watch with a modern twist. The Time Traveler features a bold, easy-to-read dial and a durable leather strap. It is a limited edition tribute to classic aviation design.',
+            features: ['Pilot watch design', 'Large, legible dial', 'Premium leather strap', 'Automatic movement'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Time+Traveler'
+        },
+        'chrono-master': {
+            name: 'Chrono Master',
+            collection: 'Elite Collection',
+            price: 2800,
+            originalPrice: null,
+            reviews: '(255 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>',
+            description: 'The Chrono Master is a high-performance chronograph that combines a sleek design with advanced functionality. It is the perfect watch for those who demand precision and style.',
+            features: ['Advanced chronograph', 'Luminous hands', 'Swiss-made quartz movement', 'Stainless steel bracelet'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Chrono+Master'
+        },
+        'solstice-commander': {
+            name: 'Solstice Commander',
+            collection: 'Luxury Series',
+            price: 3500,
+            originalPrice: null,
+            reviews: '(43 reviews)',
+            stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>',
+            description: 'A robust and reliable field watch, the Solstice Commander is built for adventure. It features a rugged case, a highly legible dial with a date complication, and a comfortable canvas strap.',
+            features: ['Rugged field watch design', 'Highly legible dial', 'Date complication', 'Canvas strap'],
+            imgSrc: 'https://placehold.co/600x600/e6f0f5/1d404d?text=Solstice+Commander'
+        }
+    };
+    
+    let favorites = [];
+
     function showPage(pageId) {
         // Hide all main sections
         const mainSections = document.querySelectorAll('main > section');
         mainSections.forEach(section => {
             section.classList.add('hidden');
+            section.classList.remove('is-visible');
         });
 
         // Show the selected section
         const selectedSection = document.getElementById(pageId);
         if (selectedSection) {
             selectedSection.classList.remove('hidden');
+            setTimeout(() => {
+                selectedSection.classList.add('is-visible');
+            }, 10);
+        }
+
+        // Special logic for the favorites section
+        if (pageId === 'favorites-section') {
+            renderFavorites();
         }
     }
 
@@ -390,10 +1267,258 @@
         menu.classList.toggle('-translate-y-full');
     }
 
+    // Function to toggle FAQ answers and accordion items
+    function toggleFAQ(id) {
+        const answer = document.getElementById(id + '-answer');
+        const icon = document.getElementById(id + '-icon');
+
+        if (answer.classList.contains('hidden')) {
+            answer.classList.remove('hidden');
+            icon.textContent = '−';
+        } else {
+            answer.classList.add('hidden');
+            icon.textContent = '+';
+        }
+    }
+    
+    function toggleAccordion(itemId) {
+        const accordionItem = document.querySelector(`#home-section .accordion-item[onclick="toggleAccordion('${itemId}')"]`);
+        const content = document.getElementById(`${itemId}-content`);
+
+        if (content.classList.contains('is-open')) {
+            content.classList.remove('is-open');
+            accordionItem.classList.remove('is-open');
+        } else {
+            // Close any other open accordion items
+            document.querySelectorAll('#home-section .accordion-content.is-open').forEach(el => {
+                el.classList.remove('is-open');
+            });
+            document.querySelectorAll('#home-section .accordion-item.is-open').forEach(el => {
+                el.classList.remove('is-open');
+            });
+            content.classList.add('is-open');
+            accordionItem.classList.add('is-open');
+        }
+    }
+
+
+
+    // Function to toggle a watch as a favorite
+    function toggleFavorite(watchId) {
+        const heartIcon = document.querySelector(`[data-watch-id="${watchId}"] .heart-icon svg`);
+        const index = favorites.findIndex(watch => watch.id === watchId);
+
+        if (index > -1) {
+            // Watch is already in favorites, so remove it
+            favorites.splice(index, 1);
+            heartIcon.classList.remove('text-red-500');
+            heartIcon.classList.add('text-gray-400');
+        } else {
+            // Watch is not in favorites, so add it
+            const watchData = watches[watchId];
+            favorites.push({ id: watchId, ...watchData });
+            heartIcon.classList.remove('text-gray-400');
+            heartIcon.classList.add('text-red-500');
+        }
+        renderFavorites();
+    }
+
+    // Function to render favorite watches in the favorites section
+    function renderFavorites() {
+        const favoritesContainer = document.getElementById('favorites-container');
+        const emptyMessage = document.getElementById('empty-favorites-message');
+        favoritesContainer.innerHTML = ''; // Clear existing content
+
+        if (favorites.length === 0) {
+            emptyMessage.classList.remove('hidden');
+        } else {
+            emptyMessage.classList.add('hidden');
+            favorites.forEach(watch => {
+                const watchCardHtml = `
+                    <div class="bg-white rounded-3xl shadow-lg-custom p-6">
+                        <div class="card-image">
+                            <img src="${watch.imgSrc}" alt="${watch.name}" class="w-full rounded-2xl mb-4">
+                            <div class="heart-icon bg-red-500" onclick="toggleFavorite('${watch.id}')">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            </div>
+                        </div>
+                        <div class="px-2">
+                            <p class="text-sm text-gray-500 mb-1">${watch.collection}</p>
+                            <h3 class="font-bold text-royal-blue text-xl mb-1">${watch.name}</h3>
+                            <div class="flex items-center text-yellow-500 text-sm mb-2">
+                                ${watch.stars}
+                                <span class="text-gray-500 ml-2">${watch.reviews}</span>
+                            </div>
+                            <div class="flex items-baseline space-x-2 mb-4">
+                                <span class="text-2xl font-bold text-royal-blue">$${watch.price}</span>
+                                ${watch.originalPrice ? `<span class="text-gray-400 line-through">$${watch.originalPrice}</span>` : ''}
+                            </div>
+                            <button class="add-to-cart-btn w-full bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                favoritesContainer.insertAdjacentHTML('beforeend', watchCardHtml);
+            });
+        }
+    }
+
+    // Function to add a watch to the cart
+    function addToCart(watchId) {
+        // This function is a placeholder since the cart functionality was removed.
+    }
+
+    // Function to filter watches based on collection
+    function filterWatches(collection) {
+        const allWatches = document.querySelectorAll('#shop-items-container > div');
+        allWatches.forEach(watchCard => {
+            if (collection === 'all' || watchCard.dataset.collection === collection) {
+                watchCard.classList.remove('hidden');
+            } else {
+                watchCard.classList.add('hidden');
+            }
+        });
+
+        // Update active filter button
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            if (button.dataset.filter === collection) {
+                button.classList.add('bg-royal-blue', 'text-white');
+                button.classList.remove('bg-white', 'text-gray-600');
+            } else {
+                button.classList.add('bg-white', 'text-gray-600');
+                button.classList.remove('bg-royal-blue', 'text-white');
+            }
+        });
+    }
+
+    // Function to show product details page
+    function showProductDetails(watchId) {
+        const watchData = watches[watchId];
+        if (!watchData) return;
+
+        const detailsContent = document.getElementById('product-details-content');
+        detailsContent.innerHTML = `
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <img src="${watchData.imgSrc}" alt="${watchData.name}" class="w-full rounded-3xl shadow-lg-custom cursor-pointer" onclick="openImageModal('${watchData.imgSrc}')">
+                </div>
+                <div class="lg:w-1/2">
+                    <h1 class="text-4xl font-bold text-royal-blue mb-2">${watchData.name}</h1>
+                    <p class="text-sm text-gray-500 mb-4">${watchData.collection}</p>
+                    <div class="flex items-center text-yellow-500 text-lg mb-4">
+                        ${watchData.stars}
+                        <span class="text-gray-500 text-sm ml-2">${watchData.reviews}</span>
+                    </div>
+                    <div class="flex items-baseline space-x-4 mb-8">
+                        <span class="text-4xl font-bold text-royal-blue">$${watchData.price}</span>
+                        ${watchData.originalPrice ? `<span class="text-gray-400 line-through text-xl">$${watchData.originalPrice}</span>` : ''}
+                    </div>
+                    <p class="text-gray-700 leading-relaxed mb-8">${watchData.description}</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 mb-8">
+                        ${watchData.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                    <button class="w-full bg-royal-blue text-white px-6 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-colors">Add to Cart</button>
+                </div>
+            </div>
+        `;
+        showPage('product-details-section');
+    }
+    
+    // Blog Posts data
+    const blogPosts = [
+        {
+            id: 'blog1',
+            title: 'The Art of Watchmaking: A Journey into Precision',
+            author: 'By Otach Team',
+            date: 'September 1, 2025',
+            image: 'https://placehold.co/600x400/1d404d/e6f0f5?text=Blog+Image+1',
+            summary: 'Explore the intricate world of horology and discover the meticulous craftsmanship that goes into every Otach timepiece. From our Swiss origins to our modern workshops, we delve into what makes a watch truly excellent.'
+        },
+        {
+            id: 'blog2',
+            title: 'Finding Your Perfect Fit: A Guide to Watch Sizing and Style',
+            author: 'By Style Contributor',
+            date: 'August 28, 2025',
+            image: 'https://placehold.co/600x400/e6f0f5/1d404d?text=Blog+Image+2',
+            summary: 'A watch is more than just a time-telling device; it is a statement. This guide will help you choose the right watch for your wrist size, personal style, and occasion.'
+        },
+        {
+            id: 'blog3',
+            title: 'Beyond Time: The Smart Features of the Otach Urban Explorer',
+            author: 'By Tech Reviewer',
+            date: 'August 20, 2025',
+            image: 'https://placehold.co/600x400/1d404d/e6f0f5?text=Blog+Image+3',
+            summary: 'The Urban Explorer seamlessly blends classic design with cutting-edge smart technology. Read our in-depth review of its GPS, health tracking, and connectivity features that make it the perfect companion for the modern world.'
+        },
+    ];
+
+    // Function to render blog posts
+    function renderBlogPosts() {
+        const blogContainer = document.getElementById('blog-container');
+        blogContainer.innerHTML = '';
+        blogPosts.forEach(post => {
+            const postHtml = `
+                <div class="bg-white rounded-3xl shadow-lg-custom p-6 hover-effect">
+                    <img src="${post.image}" alt="${post.title}" class="w-full rounded-2xl mb-4">
+                    <p class="text-sm text-gray-500 mb-2">${post.author} | ${post.date}</p>
+                    <h3 class="text-xl font-bold text-royal-blue mb-2">${post.title}</h3>
+                    <p class="text-gray-600 mb-4">${post.summary}</p>
+                    <a href="#" class="text-royal-blue font-semibold hover:underline">Read More →</a>
+                </div>
+            `;
+            blogContainer.insertAdjacentHTML('beforeend', postHtml);
+        });
+    }
+
+    // Modal functions for images
+    function openImageModal(imgSrc) {
+        const modal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        modalImage.src = imgSrc;
+        modal.classList.remove('hidden');
+    }
+
+    function closeImageModal() {
+        const modal = document.getElementById('image-modal');
+        modal.classList.add('hidden');
+    }
+    
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(element => {
+        observer.observe(element);
+    });
+
     // Initialize the page to show the home section
     document.addEventListener('DOMContentLoaded', () => {
         showPage('home-section');
+        renderBlogPosts();
+
+        // Event listeners for filter buttons
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterWatches(button.dataset.filter);
+            });
+        });
+
+        // Set up the favorites icon to open the favorites section again
+        const favoritesIcon = document.querySelector('[onclick="showPage(\'favorites-section\')"]');
+        if (favoritesIcon) {
+            favoritesIcon.onclick = (e) => {
+                e.preventDefault();
+                showPage('favorites-section');
+            };
+        }
     });
+
 </script>
 
 </body>

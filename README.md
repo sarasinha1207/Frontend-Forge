@@ -4,12 +4,12 @@ Imperion Watches is a modern and elegant watch website crafted to showcase luxur
 Deployed Live Link- https://sarasinha1207.github.io/Frontend-Forge/  
 
 ## Website Features
-Shop Section: A dedicated page to showcase all products in a clean, filterable grid layout. It includes an interactive favorites feature.  
-About Us Section: Provides a comprehensive overview of the company's story, values, achievements, and master craftsmen.  
-Press Section: A collection of news articles and social media posts about the company. It also includes a newsletter sign-up form.  
-Contact Us Section: Contains a contact form, showroom addresses, and a FAQ section with an accordion design.  
-Account Section: A dedicated page for user login and account creation.  
-Favorites Section: A page where users can view all the watches they have marked as favorites from the shop section.  
+- Shop Section: A dedicated page to showcase all products in a clean, filterable grid layout. It includes an interactive favorites feature.  
+- About Us Section: Provides a comprehensive overview of the company's story, values, achievements, and master craftsmen.  
+- Press Section: A collection of news articles and social media posts about the company. It also includes a newsletter sign-up form.  
+- Contact Us Section: Contains a contact form, showroom addresses, and a FAQ section with an accordion design.  
+- Account Section: A dedicated page for user login and account creation.  
+- Favorites Section: A page where users can view all the watches they have marked as favorites from the shop section.  
 
 ### Tech Stack   
 HTML5 – Semantic and structured web pages  

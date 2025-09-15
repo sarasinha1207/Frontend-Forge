@@ -64,7 +64,7 @@ The website was designed with a minimal, luxury-inspired theme to reflect the el
 7. Team / Masters Section
    * Profiles of master watchmakers / team: name, position, years of experience.  
 
-9. Customer Testimonials  
+8. Customer Testimonials  
    * A section for customer reviews / quotes.  
 
 
@@ -84,9 +84,6 @@ The website was designed with a minimal, luxury-inspired theme to reflect the el
 12. Subscription / Updates  
     * Newsletter / subscribe section for users to get updates.  
 
-
-14. Responsive Design / UI  
-    * While viewing, the layout seems to adjust for different sections cleanly—hero, product grid, etc. (implied). 
 
 
 

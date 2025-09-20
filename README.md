@@ -8,7 +8,7 @@ HTML5 – Semantic and structured web pages
 CSS3 – Responsive, elegant styling with modern layouts  
 JavaScript – Interactive elements and smooth navigation  
 
-## Website Contents
+## Website Contents  
 - Home Page:
   * Hero Section: A visually appealing banner with a call to action.  
   * Features Bar: A prominent bar showcasing key brand promises like "100% ORIGINAL," "7 DAY RETURN," and "FREE SHIPPING."  

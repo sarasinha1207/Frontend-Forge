@@ -9,7 +9,7 @@ CSS3 – Responsive, elegant styling with modern layouts
 JavaScript – Interactive elements and smooth navigation  
 
 ## Website Contents  
-- Home Page:  
+- Home Page:
   * Hero Section: A visually appealing banner with a call to action.  
   * Features Bar: A prominent bar showcasing key brand promises like "100% ORIGINAL," "7 DAY RETURN," and "FREE SHIPPING."  
   * Login Section: A call-to-action block encouraging users to log in or create an account for a better experience.  

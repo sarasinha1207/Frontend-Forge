@@ -12,7 +12,11 @@
             --navy-blue: #14202E;
             --midnight-blue: #2B4257;
             --blue-gray: #88A9C3;
+            --gray: #F3F4F6;
             --white: #FFFFFF;
+            --dark-green: #017F4D;
+            --golden: #D6AD56;
+            
         }
 
         body {
@@ -28,14 +32,30 @@
         .text-royal-blue {
             color: var(--royal-blue);
         }
+
+        .bg-gray {
+            background-color: var(--gray);
+        }
+        .bg-royal-white {
+            background-color: var(--white);
+        }
         .bg-royal-blue {
             background-color: var(--royal-blue);
+        }
+        .bg-midnight-blue {
+            background-color: var(--midnight-blue);
         }
         .bg-navy-blue {
             background-color: var(--navy-blue);
         }
         .bg-blue-gray {
             background-color: var(--blue-gray);
+        }
+        .bg-dark-green {
+            background-color: var(--dark-green);
+        }
+        .bg-golden{
+            background-color: var(--golden);
         }
         .border-royal-blue {
             border-color: var(--royal-blue);
@@ -177,7 +197,7 @@
                 <div class="lg:w-1/2 mb-10 lg:mb-0 fade-in">
                     <h1 class="text-4xl lg:text-7xl font-bold text-royal-blue leading-tight mb-4">Crafted for Every Second</h1>
                     <p class="text-lg text-white mb-6 max-w-lg">
-                        Discover a timeless blend of craftsmanship and cutting-edge technology.
+                        Experience innovation and expert craftsmanship, working together in perfect harmony.
                     </p>
                     <div class="flex items-center space-x-4">
                         <button class="bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Trending Products</button>
@@ -187,8 +207,8 @@
                 <div class="lg:w-1/2 flex justify-center lg:justify-end relative fade-in">
                     <img src="Image resource/smart-watch.png" alt="Green Imperium Watch" class="w-full max-w-xl watch-rotate rounded-3xl shadow-lg-custom hover-effect">
                     <div class="absolute bottom-4 left-4 lg:bottom-10 lg:left-10 bg-white p-4 rounded-3xl shadow-lg-custom">
-                        <p class="text-sm font-semibold">4.8V (20%)</p>
-                        <p class="text-xs text-gray-500">Charging Rate</p>
+                        <p class="text-sm font-semibold">Stainless Steel Build</p>
+                        <p class="text-sm font-semibold">100m Water Resistant</p>
                     </div>
                 </div>
             </div>
@@ -199,42 +219,46 @@
             <div class="container flex flex-col lg:flex-row items-center justify-between px-6">
                 <div class="lg:w-1/2 mb-10 lg:mb-0 pr-0 lg:pr-10 fade-in">
                     <div class="bg-blue-gray p-8 rounded-3xl shadow-lg-custom hover-effect">
-                        <div class="flex items-center space-x-2 mb-4">
-                            <svg class="w-6 h-6 text-royal-blue" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M13 13h-2V7h2v6zm0-8h-2V3h2v2z"/>
-                            </svg>
-                            <span class="text-sm font-medium text-royal-blue">Battery life</span>
-                        </div>
-                        <p class="text-white text-sm mb-4">
-                            We've packed an insane 3650 days long battery life with advanced optimization to give you all-day, every-day power.
+                        <p class="text-white font-semibold text-lg">
+                            Designed for enduring quality, every detail is engineered to perfection
                         </p>
                         <div class="flex items-center space-x-4 text-royal-blue font-semibold text-lg">
-                            <span>Day</span>
                             <div class="w-2 h-2 bg-royal-blue rounded-full"></div>
-                            <span>3650</span>
+                            <span>Sapphire Crystal</span>
                         </div>
                         <div class="flex items-center space-x-4 text-royal-blue font-semibold text-lg">
-                            <span>Day</span>
                             <div class="w-2 h-2 bg-royal-blue rounded-full"></div>
-                            <span>3650</span>
+                            <span>Surgical-Grade 316L Stainless Steel</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-royal-blue font-semibold text-lg">
+                            <div class="w-2 h-2 bg-royal-blue rounded-full"></div>
+                            <span>Luminous Hands & Markers</span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-royal-blue font-semibold text-lg">
+                            <div class="w-2 h-2 bg-royal-blue rounded-full"></div>
+                            <span>100m Water Resistance </span>
+                        </div>
+                        <div class="flex items-center space-x-4 text-royal-blue font-semibold text-lg">
+                            <div class="w-2 h-2 bg-royal-blue rounded-full"></div>
+                            <span>Hand-Polished Finish</span>
                         </div>
                     </div>
                 </div>
                 <div class="lg:w-1/2 text-center lg:text-left fade-in">
                     <h2 class="text-3xl lg:text-5xl font-bold text-royal-blue leading-tight mb-4">
-                        Extended life technology for better results
+                        Crafted for a Lifetime of Moments
                     </h2>
                     <p class="text-lg text-gray-600 max-w-lg mb-6 mx-auto lg:mx-0">
-                        The Imperion Smartwatch is engineered to last, with a durable battery and a range of features that make it the perfect companion for your active lifestyle.
+                        We've designed our watches to be as reliable as they are beautiful. Powered by a highly efficient, long-lasting battery, you can wear your watch for over a decade without a single thought to charging or replacement. It’s a timepiece built for endurance, so you can focus on what matters.
                     </p>
                 </div>
             </div>
         </section>
 
         <!-- Product Showcase Section -->
-        <section class="bg-blue-gray py-16 lg:py-24">
+        <section class="bg-midnight-blue py-16 lg:py-24">
             <div class="container px-6 text-center">
-                <h2 class="text-3xl lg:text-5xl font-bold text-royal-blue mb-12 fade-in">Our Special Addition</h2>
+                <h2 class="text-3xl lg:text-5xl font-bold text-white mb-12 fade-in">Our Special Addition</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Product Card 1 -->
                     <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center fade-in hover-effect">
@@ -243,12 +267,23 @@
                         <p class="text-gray-600 mb-4">$1400.00</p>
                         <div class="flex space-x-2 mb-4">
                             <span class="w-4 h-4 rounded-full bg-black border-2 border-gray-400"></span>
-                            <span class="w-4 h-4 rounded-full bg-white border-2 border-gray-400"></span>
-                            <span class="w-4 h-4 rounded-full bg-yellow-600 border-2 border-gray-400"></span>
+                            <span class="w-4 h-4 rounded-full bg-white-600 border-2 border-gray-400"></span>
                         </div>
                         <button class="bg-royal-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Add to Cart</button>
                     </div>
                     <!-- Product Card 2 -->
+                    <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.2s;">
+                        <img src="Image resource/watch-3.png" alt="Zenith carbon" class="w-full rounded-2xl mb-4">
+                        <h3 class="font-bold text-royal-blue text-xl mb-1">Jompara Classic</h3>
+                        <p class="text-gray-600 mb-4">$1400.00</p>
+                        <div class="flex space-x-2 mb-4">
+                            <span class="w-4 h-4 rounded-full bg-dark-green border-2 border-gray-400"></span>
+                            <span class="w-4 h-4 rounded-full bg-white border-2 border-gray-400"></span>
+                            <span class="w-4 h-4 rounded-full bg-golden border-2 border-gray-400"></span>
+                        </div>
+                        <button class="bg-royal-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Add to Cart</button>
+                    </div>
+                    <!-- Product Card 3 -->
                     <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.1s;">
                         <img src="Image resource/watch-2.png" alt="Zenith carbon" class="w-full rounded-2xl mb-4">
                         <h3 class="font-bold text-royal-blue text-xl mb-1">Celestial Timekeeper</h3>
@@ -256,24 +291,11 @@
                         <div class="flex space-x-2 mb-4">
                             <span class="w-4 h-4 rounded-full bg-black border-2 border-gray-400"></span>
                             <span class="w-4 h-4 rounded-full bg-white border-2 border-gray-400"></span>
-                            <span class="w-4 h-4 rounded-full bg-yellow-600 border-2 border-gray-400"></span>
-                        </div>
-                        <button class="bg-royal-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Add to Cart</button>
-                    </div>
-                    <!-- Product Card 3 -->
-                    <div class="bg-white rounded-3xl p-6 shadow-lg-custom flex flex-col items-center fade-in hover-effect" style="transition-delay: 0.2s;">
-                        <img src="Image resource/watch-3.png" alt="Zenith carbon" class="w-full rounded-2xl mb-4">
-                        <h3 class="font-bold text-royal-blue text-xl mb-1">Jompara Classic</h3>
-                        <p class="text-gray-600 mb-4">$1400.00</p>
-                        <div class="flex space-x-2 mb-4">
-                            <span class="w-4 h-4 rounded-full bg-black border-2 border-gray-400"></span>
-                            <span class="w-4 h-4 rounded-full bg-white border-2 border-gray-400"></span>
-                            <span class="w-4 h-4 rounded-full bg-yellow-600 border-2 border-gray-400"></span>
                         </div>
                         <button class="bg-royal-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Add to Cart</button>
                     </div>
                 </div>
-                <button class="mt-12 bg-gray-300 text-royal-blue px-8 py-3 rounded-full font-semibold hover:bg-gray-400 transition-colors btn-hover-scale">View All Product</button>
+                <button class="mt-12 bg-white text-royal-blue px-8 py-3 rounded-full font-semibold hover:bg-gray transition-colors btn-hover-scale">View All Product</button>
             </div>
         </section>
 
@@ -331,12 +353,6 @@
                             <span class="text-lg font-medium">Celestial Timekeeper</span>
                             <span class="text-dark-green font-bold">+</span>
                         </div>
-                        <!-- Item 4 -->
-                        <div class="flex items-center justify-between p-4 bg-gray-100 rounded-3xl shadow-md">
-                            <span class="text-dark-green font-semibold">04</span>
-                            <span class="text-lg font-medium">LuminEdge Chrono</span>
-                            <span class="text-dark-green font-bold">+</span>
-                        </div>
                     </div>
                     <div class="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <!-- Watch Image 1 -->
@@ -354,39 +370,23 @@
 
         </section>
 
-        <!-- Features Bar Section -->
-        <section class="bg-blue-gray py-12 lg:py-16">
-            <div class="container px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <!-- 100% Original -->
-                <div class="flex flex-col items-center p-4 rounded-xl">
-                    <img src="Image resource/100-logo.png" alt="100% Original Icon" class="w-12 h-12 text-royal-blue mb-3">
-                    <h3 class="text-lg font-semibold text-royal-blue">100% ORIGINAL</h3>
-                </div>
+        <div class="container px-6">           
+            <!-- Customer Testimonials -->
+            <div class="text-center mb-16"> </div>
 
-                <!-- 7 Day Return -->
-                <div class="flex flex-col items-center p-4 rounded-xl">
-                    <img src="Image resource/return-logo.png" alt="7 Day Return Icon" class="w-12 h-12 text-royal-blue mb-3">
-                    <h3 class="text-lg font-semibold text-royal-blue">7 DAY RETURN</h3>
-                </div>
-
-                <!-- Free Shipping -->
-                <div class="flex flex-col items-center p-4 rounded-xl">
-                    <img src="Image resource/free-shipping.png" alt="Free Shipping Icon" class="w-12 h-12 text-royal-blue mb-3">
-                    <h3 class="text-lg font-semibold text-royal-blue">FREE SHIPPING</h3>
+            <!-- Experience Imperium Excellence -->
+            <div class="bg-gradient-custom py-16 px-8 rounded-3xl text-center text-white fade-in hover-effect">
+                <h2 class="text-3xl font-bold mb-4">Experience Imperion Excellence</h2>
+                <p class="text-lg mb-8">
+                    Visit our showroom or explore our collection online to discover the perfect timepiece for you.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-white text-royal-blue px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors btn-hover-scale">Visit Showroom</button>
+                    <button class="bg-royal-blue text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-colors btn-hover-scale">Browse Collection</button>
                 </div>
             </div>
-        </section>
-        <!-- Login Section -->
-        <section class="py-16 bg-white fade-in">
-            <div class="container px-6 text-center">
-                <h2 class="text-2xl font-bold text-royal-blue mb-6">LOGIN FOR THE BEST EXPERIENCE</h2>
-                <button onclick="showPage('account-section')" class="bg-royal-blue text-white font-semibold px-8 py-3 rounded-full hover:bg-opacity-90 transition-colors btn-hover-scale">LOGIN NOW</button>
-                <div class="mt-4">
-                    <a href="#" onclick="showPage('account-section')" class="text-royal-blue underline font-semibold">Create An Account</a>
-                </div>
-            </div>
-        </section>
-            
+            <div class="text-center mb-16"></div>
+        </div> 
         </section>
     </section>
     
@@ -1055,7 +1055,7 @@
 </div>
 
 <!-- Footer -->
-<footer class="bg-blue- py-10 text-center">
+<footer class="bg-royal-white py-10 text-center">
     <div class="container px-6 flex flex-col items-center">
         <div class="flex items-center space-x-2 mb-2">
             <a href="#" class="flex items-center space-x-2" onclick="showPage('home-section')">
@@ -1144,8 +1144,8 @@
             originalPrice: null,
             reviews: '(43 reviews)',
             stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>',
-            description: 'A symbol of elegance, the Celestial Timekeeper features a stunning deep blue dial and a sleek, minimalist design. It is the perfect accessory for formal events and discerning individuals.',
-            features: ['Deep blue dial', 'Minimalist design', 'Slim profile', 'Swiss-made movement'],
+            description: 'A symbol of elegance, the Celestial Timekeeper features a stunning golden dial and a sleek, minimalist design. It is the perfect accessory for formal events and discerning individuals.',
+            features: ['Golden dial', 'Minimalist design', 'Slim profile', 'Swiss-made movement'],
             imgSrc: "Image resource/shop-5.png"
         },
         'urban-explorer': {
@@ -1166,8 +1166,8 @@
             originalPrice: null,
             reviews: '(95 reviews)',
             stars: '<span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>',
-            description: 'A classic pilot watch with a modern twist. The Time Traveler features a bold, easy-to-read dial and a durable leather strap. It is a limited edition tribute to classic aviation design.',
-            features: ['Pilot watch design', 'Large, legible dial', 'Premium leather strap', 'Automatic movement'],
+            description: 'A classic pilot watch with a modern twist. The Time Traveler features a bold, easy-to-read dial and durable stainless steel case and robust strap. It is a limited edition tribute to classic aviation design.',
+            features: ['Pilot watch design', 'Large, legible dial', 'Premium stainless steel strap', 'Automatic movement'],
             imgSrc: "Image resource/shop-7.png"
         },
         'chrono-master': {
